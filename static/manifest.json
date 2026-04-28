@@ -1,0 +1,21 @@
+{
+	"name": "taper-track",
+	"short_name": "taper-track",
+	"description": "Track your prescriber's taper plan. Local-first, private.",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#f8f7f4",
+	"theme_color": "#4a6741",
+	"icons": [
+		{
+			"src": "/icons/icon-192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/icons/icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}
