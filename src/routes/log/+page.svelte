@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { saveSymptomLog } from '$lib/db/store.js';
+	import { saveSymptomLog, getPassphrase } from '$lib/db/store.js';
 	import { hasIdeation, isCrisis } from '$lib/crisis/detect.js';
 	import type { SymptomLog, PhysicalSymptom } from '$lib/types.js';
 
@@ -33,6 +33,11 @@
 	async function submit() {
 		submitting = true;
 		error = '';
+		if (!getPassphrase()) {
+			error = 'Session expired — please re-enter your passphrase to continue.';
+			submitting = false;
+			return;
+		}
 		try {
 			const logEntry: SymptomLog = {
 				id: crypto.randomUUID(),

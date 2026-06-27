@@ -42,6 +42,7 @@ export interface SymptomLog {
 	mood: number;
 	anxiety: number;
 	physicalSymptoms: PhysicalSymptom[];
+	ideation?: boolean;
 	notes: string;
 	createdAt: string;
 }

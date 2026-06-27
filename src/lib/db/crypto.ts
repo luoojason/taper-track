@@ -32,7 +32,12 @@ export async function encryptData(passphrase: string, plaintext: string): Promis
 	combined.set(salt, 0);
 	combined.set(iv, SALT_BYTES);
 	combined.set(new Uint8Array(ciphertext), SALT_BYTES + IV_BYTES);
-	return btoa(String.fromCharCode(...combined));
+	let binary = '';
+	const CHUNK = 8192;
+	for (let i = 0; i < combined.length; i += CHUNK) {
+		binary += String.fromCharCode(...combined.subarray(i, i + CHUNK));
+	}
+	return btoa(binary);
 }
 
 export async function decryptData(passphrase: string, encoded: string): Promise<string> {
